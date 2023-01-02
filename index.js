@@ -3,14 +3,15 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+// CONFIGURAÇÕES DO EXPRESS
+const configExpress = require('./config/configExpress')(app, express);
 
 // CONEXÃO BD
 const { sequelize } = require('./database/conexao');
 
+// ROTAS
 app.get('/', (req,res) => {
-    res.json({mensagem: "Hello World!"});
+    res.json({mensagem: "Olá mundo!"});
 });
 
 
